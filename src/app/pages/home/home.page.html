@@ -1,6 +1,24 @@
 <div class="home">
-  <div class="home--form">
-    <p>A hora inicial do dia, é às 18 horas!</p>
-    <h3>Informa a hora em que deseja</h3>
+  <div class="home--content">
+    <div class="home--content--header">
+      <h2>Informa a hora em que deseja</h2>
+    </div>
+    <div class="home--content--form">
+      <div>
+        <p>*Defina quanto tempo o pote ficará aberto:</p>
+        <input [(ngModel)]="posts.openSeconds" class="home--content--form--time" type="number" placeholder="Informe o horário">
+      </div>
+
+      <div>
+        <p>A partir de qual horário, começará a contagem?</p>
+        <input [(ngModel)]="posts.setOpen" class="home--content--form--time" type="number" placeholder="Informe o horário">
+      </div>
+
+      <div>
+        <p>De quanto em quanto ocorre a abertura?</p>
+        <input class="home--content--form--time" type="number" maxlength="2" placeholder="Informe o horário" [(ngModel)]="posts.startHour" >
+      </div>
+      <button class="button" (click)="showData()">Enviar</button>
+    </div>
   </div>
 </div>

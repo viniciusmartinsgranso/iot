@@ -1,16 +1,13 @@
-export interface PostProxy {
+export interface CreatePostPayload {
   //Quanto tempo fica aberto
   openSeconds: number;
 
   //De quanto em quanto ocorre a abertura?
-  startHour: number;
+  startHour: any;
 
   //Quando começa a contagem?
   setOpen: number;
 
-  //Pega o horário atual;
-  getNowHour?: number;
-
-  createdAt?: Date;
-  updatedAt?: Date;
+  //Hora atual
+  getNowHour: number;
 }

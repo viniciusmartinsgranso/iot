@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiBaseUrl: 'https://api.thingspeak.com/update?api_key=281A9TSP3E136A8W',
 };
 
 /*
