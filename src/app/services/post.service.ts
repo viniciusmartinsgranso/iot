@@ -3,25 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PostProxy } from '../modules/proxies/post.proxy';
 import { apiRoutes } from '../pages/api.routes';
+import { HelperService } from './helper.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
   constructor(
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
+    private readonly helper: HelperService,
   ) {}
-
-  // public async create(post: number): Promise<AsyncResult<PostProxy>> {
-  //   const [success, error] = await this.http.post<PostProxy>(
-  //     apiRoutes.apiKeys.openSeconds.write,
-  //     post,
-  //   );
-  //
-  //   if (error) return [null, error.error.message];
-  //
-  //   return [success];
-  // }
 
   public async openSeconds(post: number): Promise<Observable<PostProxy>> {
     const url = apiRoutes.apiKeys.openSeconds.write.replace(
@@ -29,35 +20,69 @@ export class PostService {
       post.toString(),
     );
 
-    return this.http.put<PostProxy>(url, post);
+    const posts = this.http.post<PostProxy>(url, post);
+    posts.subscribe({
+      next: (newPost => newPost),
+      error: (err: Error) => console.log(err),
+    });
+    return posts;
   }
 
   public async setOpen(post: number): Promise<Observable<PostProxy>> {
+    setTimeout(() => {
+      console.log("Delay para definir o tempo aberto");
+    }, 15000);
+
     const url = apiRoutes.apiKeys.setOpen.write.replace(
       '{setOpen}',
       post.toString(),
     );
 
-    return this.http.put<PostProxy>(url, post);
+    const posts = this.http.post<PostProxy>(url, post);
 
+    posts.subscribe({
+      next: (newPost => newPost),
+      error: (err: Error) => console.log(err),
+    });
+    return posts;
   }
 
   public async startHour(post: number): Promise<Observable<PostProxy>> {
+    setTimeout(() => {
+      console.log("Delay para definir de quanto em quanto ocorre a abertura");
+    }, 15000);
+
     const url = apiRoutes.apiKeys.startHour.write.replace(
       '{startHour}',
       post.toString(),
     );
 
-    return this.http.put<PostProxy>(url, post);
+    const posts = this.http.post<PostProxy>(url, post);
 
+    posts.subscribe({
+      next: (newPost => newPost),
+      error: (err: Error) => console.log(err),
+    });
+    return posts;
   }
 
   public async getNowHour(post: number): Promise<Observable<PostProxy>> {
+    setTimeout(() => {
+      console.log("Delay para definir a hora atual");
+    }, 15000);
+
     const url = apiRoutes.apiKeys.getNowHour.write.replace(
       '{getNowHour}',
       post.toString(),
     );
 
-    return this.http.put<PostProxy>(url, post);
+    const posts = this.http.post<PostProxy>(url, post);
+
+    posts.subscribe({
+      next: (newPost => newPost),
+      error: (err: Error) => console.log(err),
+      complete: () => this.helper.showToast('O programa foi definido com sucesso! Cuidaremos muito bem do seu animalzinho!'),
+    });
+    return posts;
   }
 }
