@@ -4,6 +4,12 @@
   height: 100%;
   color: black;
   overflow: auto;
+  ::-webkit-input-placeholder {
+    text-align: center;
+  }
+  :-moz-placeholder {
+    text-align: center;
+  }
 
   &--content {
     padding: 1rem 1rem 4rem 1rem;
@@ -43,6 +49,7 @@
         border-radius: 0.3rem;
         border: 0.01rem solid #757575;
         outline: none;
+        width: 100%;
       }
     }
   }
