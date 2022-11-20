@@ -14,9 +14,9 @@ export class HomePage implements OnInit {
   ) {}
 
   public posts: CreatePostPayload = {
-    setOpen: 0,
-    startHour: 0,
-    openSeconds: 0,
+    setOpen: null,
+    startHour: null,
+    openSeconds: null,
     getNowHour: new Date().getHours(),
   };
 
