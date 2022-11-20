@@ -9,5 +9,5 @@ export interface CreatePostPayload {
   setOpen: any;
 
   //Hora atual
-  getNowHour: any;
+  getNowHour: number;
 }

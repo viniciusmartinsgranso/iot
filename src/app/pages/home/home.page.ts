@@ -29,5 +29,9 @@ export class HomePage implements OnInit {
       this.service.startHour(this.posts.startHour),
       this.service.getNowHour(this.posts.getNowHour),
     ]);
+
+    this.posts.setOpen = null;
+    this.posts.openSeconds = null;
+    this.posts.startHour = null;
   }
 }
