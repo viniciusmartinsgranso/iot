@@ -20,5 +20,5 @@
       </div>
     </div>
   </div>
-  <button class="button" (click)="showData()">Enviar</button>
+  <button class="button" [class.disabled]="!canPublish()" (click)="showData()">Enviar</button>
 </div>

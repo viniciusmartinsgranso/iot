@@ -61,3 +61,8 @@
   font-weight: bold;
   font-size: 1.3rem;
 }
+
+.disabled {
+  opacity: .3;
+  pointer-events: none;
+}

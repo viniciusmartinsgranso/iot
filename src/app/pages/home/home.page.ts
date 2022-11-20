@@ -34,4 +34,10 @@ export class HomePage implements OnInit {
     this.posts.openSeconds = null;
     this.posts.startHour = null;
   }
+
+  public canPublish(): boolean {
+    if(this.posts.startHour && this.posts.openSeconds && this.posts.setOpen) return true;
+
+    return false;
+  }
 }
